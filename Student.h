@@ -5,26 +5,22 @@
 #include <vector>
 #include "SolveEquation.h"
 #include "EqationsTable.h"
-enum sttype {mid, bad, good};
+#include "Randomizer.h"
+
 
 class Student : public SolveEquation {
 private:
-    sttype type;
     std::string surname;
     std::vector<int> variants;
-    std::vector<std::pair<double, double>> solution;
-
-    void addSolution(std::pair<double, double> p) { solution.push_back(p); }
-
 public:
 
-    Student(std::string surname, sttype type, std::vector<int> variants) {
-        this->type = type;
+    Student(std::string surname, sttype studentType, std::vector<int> variants) {
         this->surname = surname;
         this->variants = variants;
+        type = studentType;
     }
 
-    void solveQuadraticEquation(int a, int b, int c);
+    void solveQuadraticEquation(int a, int b, int c, sttype type)  override;
 
     void solveTest(EqationsTable *mathTest);
 

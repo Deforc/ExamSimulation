@@ -1,12 +1,12 @@
 #include "Student.h"
 
-void Student :: solveQuadraticEquation(int a, int b, int c) {
+void Student :: solveQuadraticEquation(int a, int b, int c, sttype type) {
     if(type == good)
-        addSolution(rightSolution(a, b, c));
+        solution.push_back(SolveEquation::getSolution(a, b, c));
     if(type == mid)
-        rand() % 2 == 0 ? addSolution(std::make_pair(0, 0)) : addSolution(rightSolution(a, b, c));
+        rand() % 2 == 0 ? solution.push_back(std::make_pair(0, 0)) : solution.push_back(SolveEquation::getSolution(a, b, c));
     if(type == bad)
-        addSolution(std::make_pair(0, 0));
+        solution.push_back(std::make_pair(0, 0));
 }
 void  Student :: solveTest(EqationsTable *mathTest)
 {
@@ -14,7 +14,7 @@ void  Student :: solveTest(EqationsTable *mathTest)
     for(auto var:variants)
     {
         auto equation = mathTest->getTask(var);
-        solveQuadraticEquation(equation[0], equation[1], equation[2]);
+        solveQuadraticEquation(equation[0], equation[1], equation[2], type);
     }
 
 }

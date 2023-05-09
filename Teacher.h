@@ -11,7 +11,11 @@ class Teacher : public SolveEquation{
 private:
     std::vector<std::pair<std::string, std::pair<int, int>>> resultTable;
 public:
-    static std::vector<int> generateVariants(int variantAmount, int maxTestVariants);
+    Teacher() {
+        type = good;
+    }
+
+    static std::vector<int> generateVariants(const int variantAmount, int maxTestVariants);
 
 
     void checkStudentSolution(const std::string& studentSurname, const std::vector<int>& studentVariants,

@@ -1,5 +1,5 @@
 #include "Teacher.h"
-std::vector<int> Teacher :: generateVariants(int variantAmount, int maxTestVariants)
+std::vector<int> Teacher :: generateVariants(const int variantAmount, int maxTestVariants)
 {
     std::vector<int> variantList;
     for(int i = 0; i < variantAmount; i++){
@@ -23,9 +23,10 @@ void Teacher :: checkStudentSolution(const std::string& studentSurname, const st
     {
 
         auto equation = mathTest.getTask(studentVariants[i]);
-        auto teacherSolution = rightSolution(equation[0], equation[1], equation[2]);
+        solveQuadraticEquation(equation[0], equation[1], equation[2], type);
+        auto teacherSolution = solution[i];
 
-        if(studentSolutions[i].first == teacherSolution.first && (studentSolutions[i].second == teacherSolution.second))
+        if( (studentSolutions[i].first == teacherSolution.first) && (studentSolutions[i].second == teacherSolution.second) )
         {
             resultTable.back().second.first++;
         }

@@ -3,6 +3,7 @@
 #include "Randomizer.h"
 #include "Teacher.h"
 
+const int VARIANTS_AMOUNT = 3;
 
 int main() {
     srand(time(nullptr));
@@ -20,7 +21,7 @@ int main() {
         std::string studentSurname;
         studentSurnamesFile >> studentSurname;
         students.emplace_back(studentSurname, Randomizer::randomizerStudent(),
-                                   teacher.generateVariants(3, mathTest.getMaxTestVariants()));
+                              teacher.generateVariants(VARIANTS_AMOUNT, mathTest.getMaxTestVariants()));
     }
 
     for(auto student:students)
